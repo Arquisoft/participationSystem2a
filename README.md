@@ -3,7 +3,7 @@
 [![codecov](https://codecov.io/gh/Arquisoft/participants0/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/participants0)
 
 
-# participants0
+# participationSystem2a
 
 [![Join the chat at https://gitter.im/Arquisoft/participants0](https://badges.gitter.im/Arquisoft/participants0.svg)](https://gitter.im/Arquisoft/participants0?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -13,4 +13,7 @@ Skeleton of participants module
 
 - Herminio García González (@herminiogg)
 - Jose Emilio Labra Gayo (@labra)
-
+- Daniel Bermejo Blanco (@UO204115)
+- Pedro Fernández Álvarez (@UO244928)
+- Darío Alonso Díaz (@UO237089)
+- Jonathan Vallés Robla (@UO231850)
