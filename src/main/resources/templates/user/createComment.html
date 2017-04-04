@@ -1,0 +1,17 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>
+	<!--createComment de momento, ya se cambiara -->
+		<form th:action="@{/createComment}" method="POST">
+		    
+		    <label for="comment">Comentario: </label>
+		    
+		    <br>
+		    
+		    <textarea name="comment" cols="200" rows="30">
+		    </textarea>
+		    <br/>
+		    <input type="submit" value="Comentar" />
+		</form>
+		
+	</body>
+</html>
