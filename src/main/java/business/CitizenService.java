@@ -1,13 +1,15 @@
 package business;
 
+import model.Categoria;
+import model.Citizen;
 import model.Comentario;
 import model.Sugerencia;
 
 public interface CitizenService {
 	
-	public void addSugerencia(Sugerencia sugerencia);
+    public void createSugerencia(Citizen citizen, Categoria categoria, String titulo, String texto);
 	
-	public void addComentario(Comentario comentario);
+	public void createComentario(Comentario comentario);
 	
 	public void updateSugerencia(Sugerencia sugerencia);
 	
@@ -15,5 +17,8 @@ public interface CitizenService {
 	
 	public void deleteComentario(Long id);
 	
+	public void votarSugerencia();
+	
+	public void votarComentario();
 
 }

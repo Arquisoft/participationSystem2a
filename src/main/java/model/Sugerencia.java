@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Date;
 import java.util.List;
 
 public class Sugerencia {
@@ -9,19 +10,43 @@ public class Sugerencia {
 	
 	
 	int votos;
+	String texto;
+	String titulo;
+	Categoria categoria;
+	private Date fechaCreacion;
+	private Citizen citizen;
 	//Quizas hay que hacerlo de otra forma en vez de String, categoria??
-	List<String> comentarios;
+	List<Comentario> comentarios;
 	
+	public Sugerencia( Categoria categoria, String titulo, String texto) {
+		super();
+		this.categoria = categoria;
+		this.titulo = titulo;
+		this.texto = texto;
+	}
 	
-	public Sugerencia() {
-		
+	public Sugerencia(Citizen citizen, Categoria categoria, String titulo, String texto) {
+		super();
+		this.citizen = citizen;
+		this.categoria = categoria;
+		this.titulo = titulo;
+		this.texto = texto;
+	}
+	
+	public Sugerencia(Citizen citizen, Categoria categoria, String titulo, String texto, Date fechaCreacion) {
+		super();
+		this.citizen = citizen;
+		this.categoria = categoria;
+		this.titulo = titulo;
+		this.texto = texto;
+		this.fechaCreacion = fechaCreacion;
 	}
 	
 	public int getVotos() {
 		return votos;
 	}
 
-	public List<String> getComentarios() {
+	public List<Comentario> getComentarios() {
 		return comentarios;
 	}
 
@@ -33,9 +58,39 @@ public class Sugerencia {
 		this.votos--;
 	}
 
-	public void addComentario(String comentario) {
+	public void addComentario(Comentario comentario) {
 		this.comentarios.add(comentario);
 	}
+
+	public String getTexto() {
+		return texto;
+	}
+
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+	
+	
 
 	@Override
 	public int hashCode() {
