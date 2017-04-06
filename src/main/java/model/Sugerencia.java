@@ -7,8 +7,8 @@ public class Sugerencia {
 
 	//Las sugerencias podrán ser votadas por otros usuarios, que podrán aumentar o
 	//disminuir su popularidad. 
-	
-	
+
+
 	int votos;
 	String texto;
 	String titulo;
@@ -17,14 +17,14 @@ public class Sugerencia {
 	private Citizen citizen;
 	//Quizas hay que hacerlo de otra forma en vez de String, categoria??
 	List<Comentario> comentarios;
-	
+
 	public Sugerencia( Categoria categoria, String titulo, String texto) {
 		super();
 		this.categoria = categoria;
 		this.titulo = titulo;
 		this.texto = texto;
 	}
-	
+
 	public Sugerencia(Citizen citizen, Categoria categoria, String titulo, String texto) {
 		super();
 		this.citizen = citizen;
@@ -32,7 +32,7 @@ public class Sugerencia {
 		this.titulo = titulo;
 		this.texto = texto;
 	}
-	
+
 	public Sugerencia(Citizen citizen, Categoria categoria, String titulo, String texto, Date fechaCreacion) {
 		super();
 		this.citizen = citizen;
@@ -41,7 +41,7 @@ public class Sugerencia {
 		this.texto = texto;
 		this.fechaCreacion = fechaCreacion;
 	}
-	
+
 	public int getVotos() {
 		return votos;
 	}
@@ -89,8 +89,8 @@ public class Sugerencia {
 	public void setComentarios(List<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
-	
-	
+
+
 
 	@Override
 	public int hashCode() {
@@ -125,6 +125,6 @@ public class Sugerencia {
 		return "Sugerencia [votos=" + votos + ", comentarios=" + comentarios + "]";
 	}
 
-	
-	
+
+
 }

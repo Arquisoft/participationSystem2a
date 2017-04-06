@@ -8,7 +8,7 @@ import model.Sugerencia;
 import model.exception.BusinessException;
 
 public class SystemServiceImpl implements SystemService {
-	
+
 	private CommandExecutor cmd = new CommandExecutor();
 
 	@Override

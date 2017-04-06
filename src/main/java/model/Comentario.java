@@ -2,7 +2,7 @@ package model;
 
 public class Comentario {
 
-		String comentario;
+	String comentario;
 
 	public Comentario(String comentario) {
 		super();
@@ -53,5 +53,5 @@ public class Comentario {
 
 
 
-	
+
 }

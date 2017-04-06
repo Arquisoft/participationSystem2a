@@ -9,19 +9,19 @@ import model.exception.BusinessException;
 import persistence.Jpa;
 
 public class CommandExecutor {
-	
+
 	public Object execute(Command cmd) throws BusinessException {
-		
+
 		EntityManager mapper = Jpa.createEntityManager();
 		EntityTransaction trx = mapper.getTransaction();
 		trx.begin();
-		
+
 		try {
 			Object result = cmd.execute();
-			
+
 			trx.commit();
 			return result;
-			
+
 		} catch (BusinessException be) {
 			if (trx.isActive())
 				trx.rollback();
