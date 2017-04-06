@@ -7,12 +7,11 @@ import model.Sugerencia;
 import model.exception.BusinessException;
 
 public interface SystemService {
-	
 
-	public List<Categoria> findAllCategories() throws BusinessException;
-		
-	public List<Sugerencia> findAllSugerencias() throws BusinessException;
-		
-	public List<Sugerencia> findSugerenciasByCategory(Long idCategory) throws BusinessException;
-	
+    public List<Categoria> findAllCategories() throws BusinessException;
+
+    public List<Sugerencia> findAllSugerencias() throws BusinessException;
+
+    public List<Sugerencia> findSugerenciasByCategory(Long idCategory) throws BusinessException;
+
 }
