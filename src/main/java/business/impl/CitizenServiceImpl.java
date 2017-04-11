@@ -1,10 +1,13 @@
 package business.impl;
 
+import java.util.List;
+
 import business.CitizenService;
 import model.Categoria;
 import model.Citizen;
 import model.Comentario;
 import model.Sugerencia;
+import model.exception.BusinessException;
 
 public class CitizenServiceImpl implements CitizenService {
 
@@ -55,6 +58,11 @@ public class CitizenServiceImpl implements CitizenService {
 	public void votarComentario() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	@Override
+	public void getAllCategories() throws BusinessException {
+	
 	}
 
 

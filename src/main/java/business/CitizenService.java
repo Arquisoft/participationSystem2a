@@ -4,6 +4,7 @@ import model.Categoria;
 import model.Citizen;
 import model.Comentario;
 import model.Sugerencia;
+import model.exception.BusinessException;
 
 public interface CitizenService {
 	
@@ -21,4 +22,5 @@ public interface CitizenService {
 	
 	public void votarComentario();
 
+	public void getAllCategories() throws BusinessException;
 }

@@ -25,11 +25,15 @@ public class MainController {
     @Autowired
     private KafkaProducer kafkaProducer;
 
+    
+    
     @RequestMapping("/")
     public String landing(Model model) {
         model.addAttribute("message", new Message());
         return "index";
     }
+    
+    
     
     @RequestMapping("/send")
     public String send(Model model, @ModelAttribute Message message) {
@@ -37,13 +41,17 @@ public class MainController {
         return "redirect:/";
     }
     
-    @RequestMapping(value = "/crearSugerencia", method = RequestMethod.POST)
+    
+    
+    @RequestMapping(value = "/createSuggestion", method = RequestMethod.POST)
     public String CrearSolicitud(HttpSession session,Model model) throws BusinessException {
     	
     		List<Categoria> categorias = Services.getSystemServices().findAllCategories();
     		model.addAttribute("categorias", categorias);
     		return "crearSugerencia";
     }
+    
+    
     
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(HttpSession session,Model model,@RequestParam String username, @RequestParam String password) {
@@ -64,5 +72,14 @@ public class MainController {
 
     		return "login";	
     }
+    
+    
+    
+	@RequestMapping(value = "/logOut")
+	public String logOut(HttpSession session){
+	 	 	session.setAttribute("citizen",null);
+		return "/index";
+
+	}
 
 }
