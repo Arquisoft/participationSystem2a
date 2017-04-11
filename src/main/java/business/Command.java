@@ -4,6 +4,5 @@ import model.exception.BusinessException;
 
 public interface Command {
 
-		Object execute() throws BusinessException;
-	}
-
+    Object execute() throws BusinessException;
+}
