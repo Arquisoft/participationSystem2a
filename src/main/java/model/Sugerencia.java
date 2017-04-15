@@ -122,4 +122,5 @@ public class Sugerencia {
 	return "Sugerencia [votos=" + votos + ", comentarios=" + comentarios + "]";
     }
 
+
 }

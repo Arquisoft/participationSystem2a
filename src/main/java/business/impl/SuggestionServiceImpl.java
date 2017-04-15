@@ -18,20 +18,20 @@ public class SuggestionServiceImpl implements SuggestionService {
 	
 	@Override
 	public List<Sugerencia> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+        return this.suggestionRepository.findAll();
+
 	}
 
 	@Override
 	public Sugerencia findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+        return this.suggestionRepository.findOne(id);
+
 	}
 
 	@Override
 	public List<Sugerencia> findByCat(Categoria cat) {
-		// TODO Auto-generated method stub
-		return null;
+        return this.suggestionRepository.findByCategoria(cat);
+
 	}
 
 	@Override
@@ -47,9 +47,18 @@ public class SuggestionServiceImpl implements SuggestionService {
 	}
 
 	@Override
-	public void createSugerencia(Citizen citizen, Categoria categoria, String titulo, String contenido)
+	public void createSugerencia(Citizen citizen, Categoria categoria, String titulo, String texto)
 			throws BusinessException {
-		// TODO Auto-generated method stub
+		 try {
+	            Sugerencia sugerencia = new Sugerencia(citizen, categoria, titulo, texto);
+	            suggestionRepository.save(sugerencia);
+	            /* Tenemos que crear un log
+	            LOG.send(Topics.CREATE_sugerenciaGESTION,
+	                    sugerencia.getTitulo() + sugerencia.getTexto() + separator + sugerencia.getCategoria());
+	                    */
+	        } catch (Exception e) {
+	            throw new BusinessException("No se ha podido crear la sugerencia.");
+	        }
 		
 	}
 

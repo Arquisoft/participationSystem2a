@@ -1,5 +1,7 @@
 package business;
 
+import java.util.List;
+
 import model.Categoria;
 import model.Citizen;
 import model.Comentario;
@@ -22,5 +24,5 @@ public interface CitizenService {
 
     public void votarComentario();
 
-	public void getAllCategories() throws BusinessException;
+	public List<Categoria> getAllCategories() throws BusinessException;
 }
