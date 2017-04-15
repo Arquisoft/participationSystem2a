@@ -2,14 +2,20 @@ package business.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import business.SuggestionService;
 import model.Categoria;
 import model.Citizen;
 import model.Sugerencia;
 import model.exception.BusinessException;
+import repository.SuggestionRepository;
 
 public class SuggestionServiceImpl implements SuggestionService {
 
+	@Autowired
+	private SuggestionRepository suggestionRepository;
+	
 	@Override
 	public List<Sugerencia> findAll() {
 		// TODO Auto-generated method stub
