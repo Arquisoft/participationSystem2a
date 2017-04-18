@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<title>Añadir sugerencia</title>
+
+	<body>
+	<!--createSuggestion de momento, ya se cambiara -->
+		<form th:action="@{/createSuggestion}" method="POST">
+		    
+		    <label for="comment">Sugerencia: </label>
+		    
+		div>
+	    <label for="texto">Texto: </label>
+	    <input type="text" id="texto" name="texto"/>
+    	</div>
+    	
+    <button id="nuevaSugerencia" type="submit">Nueva sugerencia</button>
+		</form>
+		
+	</body>
+</html>

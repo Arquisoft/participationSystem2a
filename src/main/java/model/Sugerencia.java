@@ -14,6 +14,7 @@ public class Sugerencia {
     Categoria categoria;
     private Date fechaCreacion;
     private Citizen citizen;
+    private Long id;
     // Quizas hay que hacerlo de otra forma en vez de String, categoria??
     List<Comentario> comentarios;
 
@@ -121,6 +122,12 @@ public class Sugerencia {
     public String toString() {
 	return "Sugerencia [votos=" + votos + ", comentarios=" + comentarios + "]";
     }
+
+	public Long getId() {
+		return id;
+	}
+    
+    
 
 
 }

@@ -22,11 +22,18 @@ public class SuggestionServiceImpl implements SuggestionService {
 
 	}
 
+	//BORRAR MAS ADELANTE
 	@Override
 	public Sugerencia findById(Long id) {
         return this.suggestionRepository.findOne(id);
 
 	}
+	
+	@Override
+	public Sugerencia getSuggestion(Long id) {
+		return suggestionRepository.findOne(id);
+	}
+
 
 	@Override
 	public List<Sugerencia> findByCat(Categoria cat) {
@@ -60,6 +67,12 @@ public class SuggestionServiceImpl implements SuggestionService {
 	            throw new BusinessException("No se ha podido crear la sugerencia.");
 	        }
 		
+	}
+	
+	
+	@Override
+	public void deleteSuggestion(Long id) {
+		suggestionRepository.delete(id);
 	}
 
 }
