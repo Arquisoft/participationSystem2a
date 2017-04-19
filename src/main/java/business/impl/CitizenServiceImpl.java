@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import business.CitizenService;
-import model.Categoria;
+import model.Category;
 import model.Citizen;
 import model.Comentario;
 import model.Sugerencia;
@@ -20,7 +20,7 @@ public class CitizenServiceImpl implements CitizenService {
 	private CategoryRepository categoryRepository;
 	
 	@Override
-	public void createSugerencia(Citizen citizen, Categoria categoria, String titulo, String texto) {
+	public void createSugerencia(Citizen citizen, Category categoria, String titulo, String texto) {
 
 		// Realizar comprobaciones previas
 
@@ -61,7 +61,7 @@ public class CitizenServiceImpl implements CitizenService {
 	}
 
 	@Override
-	public List<Categoria> getAllCategories() throws BusinessException {
+	public List<Category> getAllCategories() throws BusinessException {
 		return categoryRepository.findAll();
 
 	}

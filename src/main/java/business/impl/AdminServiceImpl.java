@@ -1,18 +1,18 @@
 package business.impl;
 
 import business.AdminService;
-import model.Categoria;
+import model.Category;
 
 public class AdminServiceImpl implements AdminService {
 
     @Override
-    public void addCategoria(Categoria categoria) {
+    public void addCategoria(Category categoria) {
 	// TODO Auto-generated method stub
 
     }
 
     @Override
-    public void updateCategoria(Categoria categoria) {
+    public void updateCategoria(Category categoria) {
 	// TODO Auto-generated method stub
 
     }

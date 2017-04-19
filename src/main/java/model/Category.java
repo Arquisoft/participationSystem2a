@@ -1,19 +1,20 @@
 package model;
 
+import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "TCATEGORIA")
-public class Categoria {
+public class Category {
 
     Long id;
     String nombre;
 
-    protected Set<Sugerencia> sugerencias;
+    @OneToMany(mappedBy="TCATEGORIA", cascade = CascadeType.ALL)
+    private Set<Sugerencia> sugerencias;
 
-    public Categoria(String nombre) {
+    public Category(String nombre) {
 	super();
 	this.nombre = nombre;
     }
@@ -27,7 +28,7 @@ public class Categoria {
     }
 
     public Set<Sugerencia> getSugerencias() {
-	return sugerencias;
+	return new HashSet<Sugerencia>(sugerencias);
     }
 
     public void addSugerencia(Sugerencia sugerencia) {
@@ -36,11 +37,7 @@ public class Categoria {
 
     @Override
     public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + ((id == null) ? 0 : id.hashCode());
-	result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-	return result;
+	return nombre.hashCode();
     }
 
     @Override
@@ -51,7 +48,7 @@ public class Categoria {
 	    return false;
 	if (getClass() != obj.getClass())
 	    return false;
-	Categoria other = (Categoria) obj;
+	Category other = (Category) obj;
 	if (id == null) {
 	    if (other.id != null)
 		return false;
@@ -67,7 +64,7 @@ public class Categoria {
 
     @Override
     public String toString() {
-	return "Categoria [nombre=" + nombre + ", sugerencias=" + sugerencias + "]";
+	return "Categoria [id=" + id + ", nombre=" + nombre + ", sugerencias=" + sugerencias + "]";
     }
 
 }

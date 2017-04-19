@@ -2,18 +2,18 @@ package business;
 
 import java.util.List;
 
-import model.Categoria;
+import model.Category;
 import model.exception.BusinessException;
 
 public interface CategoryService {
 	
 
-    List<Categoria> findAll();
+    List<Category> findAll();
     
-    Categoria findByName(String name);
+    Category findByName(String name);
     
-    Categoria findById(Long id);
+    Category findById(Long id);
 
-    public void createCategory(Categoria categoria) throws BusinessException;
+    public void createCategory(Category categoria) throws BusinessException;
 
 }

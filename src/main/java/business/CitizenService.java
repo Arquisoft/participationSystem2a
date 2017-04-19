@@ -2,7 +2,7 @@ package business;
 
 import java.util.List;
 
-import model.Categoria;
+import model.Category;
 import model.Citizen;
 import model.Comentario;
 import model.Sugerencia;
@@ -10,7 +10,7 @@ import model.exception.BusinessException;
 
 public interface CitizenService {
 
-    public void createSugerencia(Citizen citizen, Categoria categoria, String titulo, String texto);
+    public void createSugerencia(Citizen citizen, Category categoria, String titulo, String texto);
 
     public void createComentario(Comentario comentario);
 
@@ -24,5 +24,5 @@ public interface CitizenService {
 
     public void votarComentario();
 
-	public List<Categoria> getAllCategories() throws BusinessException;
+	public List<Category> getAllCategories() throws BusinessException;
 }

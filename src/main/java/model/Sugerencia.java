@@ -11,21 +11,21 @@ public class Sugerencia {
     int votos;
     String texto;
     String titulo;
-    Categoria categoria;
+    Category categoria;
     private Date fechaCreacion;
     private Citizen citizen;
     private Long id;
     // Quizas hay que hacerlo de otra forma en vez de String, categoria??
     List<Comentario> comentarios;
 
-    public Sugerencia(Categoria categoria, String titulo, String texto) {
+    public Sugerencia(Category categoria, String titulo, String texto) {
 	super();
 	this.categoria = categoria;
 	this.titulo = titulo;
 	this.texto = texto;
     }
 
-    public Sugerencia(Citizen citizen, Categoria categoria, String titulo, String texto) {
+    public Sugerencia(Citizen citizen, Category categoria, String titulo, String texto) {
 	super();
 	this.citizen = citizen;
 	this.categoria = categoria;
@@ -33,7 +33,7 @@ public class Sugerencia {
 	this.texto = texto;
     }
 
-    public Sugerencia(Citizen citizen, Categoria categoria, String titulo, String texto, Date fechaCreacion) {
+    public Sugerencia(Citizen citizen, Category categoria, String titulo, String texto, Date fechaCreacion) {
 	super();
 	this.citizen = citizen;
 	this.categoria = categoria;
@@ -78,11 +78,11 @@ public class Sugerencia {
 	this.titulo = titulo;
     }
 
-    public Categoria getCategoria() {
+    public Category getCategoria() {
 	return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(Category categoria) {
 	this.categoria = categoria;
     }
 
@@ -123,11 +123,8 @@ public class Sugerencia {
 	return "Sugerencia [votos=" + votos + ", comentarios=" + comentarios + "]";
     }
 
-	public Long getId() {
-		return id;
-	}
-    
-    
-
+    public Long getId() {
+	return id;
+    }
 
 }

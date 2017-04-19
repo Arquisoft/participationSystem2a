@@ -1,12 +1,12 @@
 package business;
 
-import model.Categoria;
+import model.Category;
 
 public interface AdminService {
 
-    public void addCategoria(Categoria categoria);
+    public void addCategoria(Category categoria);
 
-    public void updateCategoria(Categoria categoria);
+    public void updateCategoria(Category categoria);
 
     public void deleteCategoria(Long id);
 

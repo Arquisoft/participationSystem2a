@@ -3,7 +3,7 @@ package business.impl;
 import java.util.List;
 
 import business.SystemService;
-import model.Categoria;
+import model.Category;
 import model.Sugerencia;
 import model.exception.BusinessException;
 import repository.CategoryRepository;
@@ -19,8 +19,8 @@ public class SystemServiceImpl implements SystemService {
     
 
     @Override
-    public List<Categoria> findAllCategories() throws BusinessException {
-    	List<Categoria> categories= this.categoryRepository.findAll();
+    public List<Category> findAllCategories() throws BusinessException {
+    	List<Category> categories= this.categoryRepository.findAll();
 		return categories;
     }
 

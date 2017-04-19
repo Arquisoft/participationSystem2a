@@ -2,13 +2,13 @@ package business;
 
 import java.util.List;
 
-import model.Categoria;
+import model.Category;
 import model.Sugerencia;
 import model.exception.BusinessException;
 
 public interface SystemService {
 
-    public List<Categoria> findAllCategories() throws BusinessException;
+    public List<Category> findAllCategories() throws BusinessException;
 
     public List<Sugerencia> findAllSugerencias() throws BusinessException;
 
