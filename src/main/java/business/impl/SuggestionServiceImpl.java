@@ -14,7 +14,6 @@ import repository.SuggestionRepository;
 
 public class SuggestionServiceImpl implements SuggestionService {
 
-    @Autowired
     private SuggestionRepository suggestionRepository;
 
     @Autowired

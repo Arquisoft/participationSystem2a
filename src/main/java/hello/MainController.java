@@ -29,14 +29,11 @@ public class MainController {
     @Autowired
     private KafkaProducer kafkaProducer;
     private Sugerencia nuevaSugerencia;
-//    @Autowired
 //    private CommentRepository commentRepository;
-    @Autowired
     private SuggestionService suggestionService;
-    @Autowired
     private CommentService commentService;
     
-    @Autowired
+    
     public void setSuggestionService(SuggestionService suggestionService) {
         this.suggestionService = suggestionService;
     }
