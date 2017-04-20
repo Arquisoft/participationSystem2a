@@ -29,20 +29,25 @@ public class MainController {
     @Autowired
     private KafkaProducer kafkaProducer;
     private Sugerencia nuevaSugerencia;
-//    private CommentRepository commentRepository;
+    // private CommentRepository commentRepository;
     private SuggestionService suggestionService;
     private CommentService commentService;
-    
-    
+
     public void setSuggestionService(SuggestionService suggestionService) {
-        this.suggestionService = suggestionService;
+	this.suggestionService = suggestionService;
     }
 
     @RequestMapping("/")
     public String landing(Model model) {
 	model.addAttribute("message", new Message());
-	return "index";
+	return "login";
     }
+
+    // @RequestMapping("/login")
+    // public String userMenu(Model model) {
+    // model.addAttribute("message", new Message());
+    // return "/user/index";
+    // }
 
     @RequestMapping("/send")
     public String send(Model model, @ModelAttribute Message message) {
@@ -52,7 +57,7 @@ public class MainController {
 
     @RequestMapping("/newSuggestion")
     public String nuevaSugerencia() {
-	return "createSuggestion";
+	return "/user/createSuggestion";
     }
 
     @RequestMapping(value = "/createSuggestion", method = RequestMethod.POST)
@@ -66,32 +71,33 @@ public class MainController {
     @RequestMapping("/newComment")
     public String newComment(@RequestParam("sugerencia") Sugerencia sugerencia) {
 	this.nuevaSugerencia = sugerencia;
-	return "añadirComentario";
+	return "/user/createComment";
     }
 
     @RequestMapping(value = "/createComment", method = RequestMethod.POST)
-    public String añadirComentario(HttpSession session, Model model, @RequestParam String contenido) throws BusinessException {
+    public String añadirComentario(HttpSession session, Model model, @RequestParam String contenido)
+	    throws BusinessException {
 	// OJO CON ESTA LINEA (user?citizen?)
 	Comentario comentario = new Comentario(contenido, nuevaSugerencia, (Citizen) session.getAttribute("user"));
 
-//	commentRepository.save(comentario);
+	// commentRepository.save(comentario);
 	commentService.createComentario(comentario);
-//	commentService.createComentario(contenido, nuevaSugerencia, (Citizen) session.getAttribute("user"));
+	// commentService.createComentario(contenido, nuevaSugerencia, (Citizen)
+	// session.getAttribute("user"));
 	model.addAttribute("nuevaSugerencia", suggestionService.getSuggestion(nuevaSugerencia.getId()));
 	return "mostrarSugerencia";
     }
-    
+
     /*
-     * @RequestMapping(value = "/comment")
-	public String addComment(@RequestParam String idSug, String comentario, Model model, HttpSession session) {
-		Long id = Long.parseLong(idSug);
-		Sugerencia sugerencia = suggestionService.findById(id);
-		Citizen citizen = (Citizen) session.getAttribute("citizen");
-		commentService.createComentario(comentario, sugerencia, citizen);
-		sugerencia = suggestionService.findById(id);
-		model.addAttribute("sugerencia", sugerencia);
-		return "/user/viewSuggestion";
-	}
+     * @RequestMapping(value = "/comment") public String
+     * addComment(@RequestParam String idSug, String comentario, Model model,
+     * HttpSession session) { Long id = Long.parseLong(idSug); Sugerencia
+     * sugerencia = suggestionService.findById(id); Citizen citizen = (Citizen)
+     * session.getAttribute("citizen");
+     * commentService.createComentario(comentario, sugerencia, citizen);
+     * sugerencia = suggestionService.findById(id);
+     * model.addAttribute("sugerencia", sugerencia); return
+     * "/user/viewSuggestion"; }
      * 
      */
 
@@ -150,27 +156,28 @@ public class MainController {
 	return "listaSugerencias";
     }
 
-//    @RequestMapping(value = "/deleteComentario", method = RequestMethod.POST)
-//    public String eliminarComentario(HttpSession session, Model model, @RequestParam("comentario") Long id) {
-//
-////	commentRepository.delete(id);
-//	model.addAttribute("seleccionada", suggestionService.getSuggestion(nuevaSugerencia.getId()));
-//
-//	return "mostrarSugerenciaAdmin";
-//    }
+    @RequestMapping(value = "/deleteComentario", method = RequestMethod.POST)
+    public String eliminarComentario(HttpSession session, Model model, @RequestParam("comentario") Long id) {
 
-//    @RequestMapping(value = "/eliminarSugerencia", method = RequestMethod.POST)
-//    public String eliminarSugerencia(Model model, @RequestParam("sugerencia") Long id) {
-//	Sugerencia sugerencia = suggestionService.getSuggestion(id);
-//	// Borra los comentarios escritos en ella
-//	for (Comentario c : sugerencia.getComentarios()) {
-//	    commentRepository.delete(c);
-//	}
-//	suggestionService.deleteSuggestion(id);
-//	// Las vuelve a cargar
-//	List<Sugerencia> sugerencias = suggestionService.findAll();
-//	model.addAttribute("sugerencias", sugerencias);
-//	return "listaSugerenciasAdmin";
-//    }
+	// commentRepository.delete(id);
+	model.addAttribute("seleccionada", suggestionService.getSuggestion(nuevaSugerencia.getId()));
+
+	return "mostrarSugerenciaAdmin";
+    }
+
+    @RequestMapping(value = "/eliminarSugerencia", method = RequestMethod.POST)
+    public String eliminarSugerencia(Model model, @RequestParam("sugerencia") Long id) {
+	Sugerencia sugerencia = suggestionService.getSuggestion(id);
+	// Borra los comentarios escritos en ella
+	for (Comentario c : sugerencia.getComentarios()) {
+	    // commentRepository.delete(c);
+	    // commentService.delete(c);
+	}
+	suggestionService.deleteSuggestion(id);
+	// Las vuelve a cargar
+	List<Sugerencia> sugerencias = suggestionService.findAll();
+	model.addAttribute("sugerencias", sugerencias);
+	return "listaSugerenciasAdmin";
+    }
 
 }
