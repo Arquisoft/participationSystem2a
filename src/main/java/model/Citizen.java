@@ -12,117 +12,117 @@ public class Citizen {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
 
-    @Column(name = "NOMBRE")
-    private String nombre;
-    @Column(name = "APELLIDOS")
-    private String apellidos;
+    @Column(name = "NAME")
+    private String name;
+    @Column(name = "SURNAME")
+    private String surname;
     private String email;
     @Temporal(TemporalType.DATE)
-    @Column(name = "FECHA_NACIMIENTO")
-    private Date fechaNacimiento;
+    @Column(name = "BORN_DATE")
+    private Date bornDate;
 
-    private String direccionPostal;
-    private String nacionalidad;
+    private String address;
+    private String nationality;
     private String dni;
-    private String nombreUsuario;
-    private String contrasena;
+    private String user;
+    private String password;
 
     // Constructor vacio para JPA
     public Citizen() {
     }
 
-    public Citizen(String nombre, String apellidos, String email, Date fechaNacimiento, String direccionPostal,
-	    String nacionalidad, String dni, String nombreUsuario, String contrasena) {
+    public Citizen(String name, String surname, String email, Date bornDate, String address,
+	    String nationality, String dni, String user, String password) {
 	super();
-	this.nombre = nombre;
-	this.apellidos = apellidos;
+	this.name = name;
+	this.surname = surname;
 	this.email = email;
-	this.fechaNacimiento = fechaNacimiento;
-	this.direccionPostal = direccionPostal;
-	this.nacionalidad = nacionalidad;
+	this.bornDate = bornDate;
+	this.address = address;
+	this.nationality = nationality;
 	this.dni = dni;
-	this.nombreUsuario = nombreUsuario;
-	this.contrasena = contrasena;
+	this.user = user;
+	this.password = password;
     }
 
-    public Citizen(String nombre, String apellidos, String email, Date fechaNacimiento, String direccionPostal,
-	    String nacionalidad, String dni) {
+    public Citizen(String name, String surname, String email, Date bornDate, String address,
+	    String nationality, String dni) {
 	super();
-	this.nombre = nombre;
-	this.apellidos = apellidos;
+	this.name = name;
+	this.surname = surname;
 	this.email = email;
-	this.fechaNacimiento = fechaNacimiento;
-	this.direccionPostal = direccionPostal;
-	this.nacionalidad = nacionalidad;
+	this.bornDate = bornDate;
+	this.address = address;
+	this.nationality = nationality;
 	this.dni = dni;
     }
 
-    public String getNombreUsuario() {
-	return nombreUsuario;
+    public String getUser() {
+	return user;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-	this.nombreUsuario = nombreUsuario;
+    public void setUser(String user) {
+	this.user = user;
     }
 
-    public String getContrasena() {
-	return contrasena;
+    public String getPassword() {
+	return password;
     }
 
-    public void setContrasena(String contrasena) {
-	this.contrasena = contrasena;
+    public void setPassword(String password) {
+	this.password = password;
     }
 
-    public String getNombre() {
-	return nombre;
+    public String getName() {
+	return name;
     }
 
-    public String getApellidos() {
-	return apellidos;
+    public String getSurname() {
+	return surname;
     }
 
     public String getEmail() {
 	return email;
     }
 
-    public Date getFechaNacimiento() {
-	return fechaNacimiento;
+    public Date getBornDate() {
+	return bornDate;
     }
 
-    public String getDireccionPostal() {
-	return direccionPostal;
+    public String getAddress() {
+	return address;
     }
 
-    public String getNacionalidad() {
-	return nacionalidad;
+    public String getNationality() {
+	return nationality;
     }
 
     public String getDni() {
 	return dni;
     }
 
-    public void setNombre(String nombre) {
-	this.nombre = nombre;
+    public void setName(String name) {
+	this.name = name;
     }
 
-    public void setApellidos(String apellidos) {
-	this.apellidos = apellidos;
+    public void setSurname(String surname) {
+	this.surname = surname;
     }
 
     public void setEmail(String email) {
 	this.email = email;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-	this.fechaNacimiento = fechaNacimiento;
+    public void setBornDate(Date bornDate) {
+	this.bornDate = bornDate;
     }
 
-    public void setDireccionPostal(String direccionPostal) {
-	this.direccionPostal = direccionPostal;
+    public void setAddress(String address) {
+	this.address = address;
     }
 
-    public void setNacionalidad(String nacionalidad) {
-	this.nacionalidad = nacionalidad;
+    public void setNationality(String nationality) {
+	this.nationality = nationality;
     }
 
     public void setDni(String dni) {
@@ -156,8 +156,8 @@ public class Citizen {
 
     @Override
     public String toString() {
-	return "Citizen [nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email + ", fechaNacimiento="
-		+ fechaNacimiento + ", direccionPostal=" + direccionPostal + ", nacionalidad=" + nacionalidad + ", dni="
+	return "Citizen [name=" + name + ", surname=" + surname + ", email=" + email + ", bornDate="
+		+ bornDate + ", address=" + address + ", nationality=" + nationality + ", dni="
 		+ dni + "]";
     }
 

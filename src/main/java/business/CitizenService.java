@@ -25,4 +25,8 @@ public interface CitizenService {
     public void votarComentario();
 
 	public List<Category> getAllCategories() throws BusinessException;
+
+	Citizen getCitizen(String dni);
+	
+	
 }

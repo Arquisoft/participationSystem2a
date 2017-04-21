@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import business.CitizenService;
 import business.CommentService;
 import business.Services;
 import business.SuggestionService;
@@ -32,6 +33,8 @@ public class MainController {
     // private CommentRepository commentRepository;
     private SuggestionService suggestionService;
     private CommentService commentService;
+	private CitizenService citizenService;
+
 
     public void setSuggestionService(SuggestionService suggestionService) {
 	this.suggestionService = suggestionService;
@@ -105,18 +108,23 @@ public class MainController {
     public String login(HttpSession session, Model model, @RequestParam String username,
 	    @RequestParam String password) {
 
+    	
+		Citizen citizen = citizenService.getCitizen(username);
+
+
 	// Mirar como hacer el login para usuario y admin
 	boolean validar = true;
 	boolean admin = false;
 
-	if (validar) {
+	if (citizen != null && password.equals(citizen.getPassword())) {
+		
 	    session.setAttribute("user", new User(username, password));
-	    return "user";
+	    return "indexUsuario";
 	}
 
 	else if (admin) {
 	    session.setAttribute("user", new User(username, password));
-	    return "admin";
+	    return "indexAdmin";
 	}
 
 	return "login";

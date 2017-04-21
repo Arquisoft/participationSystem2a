@@ -73,5 +73,11 @@ public class CitizenServiceImpl implements CitizenService {
 		// TODO Auto-generated method stub
 
 	}
+	
+	@Override
+	public Citizen getCitizen(String dni) {
+		Citizen c = this.citizenRepository.findByDni(dni);
+		return c;
+	}
 
 }
