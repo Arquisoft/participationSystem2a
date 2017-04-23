@@ -5,12 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import business.CommentService;
-import model.Category;
 import model.Citizen;
 import model.Comentario;
 import model.Sugerencia;
 import model.exception.BusinessException;
-import repository.CitizenRepository;
 import repository.CommentRepository;
 
 public class CommentServiceImpl implements CommentService {
