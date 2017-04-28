@@ -2,7 +2,7 @@ package model;
 
 public class Association {
 
-	public static class Asignar {
+	public static class Asign {
 
 		public static void link(User user, Citizen citizen) {
 			user._setCitizen(citizen);
@@ -15,7 +15,7 @@ public class Association {
 		}
 	}
 	
-	public static class Asignarsuggestion {
+	public static class AsignSuggestion {
 		
 		public static void link(User user, Suggestion suggestion) {
 			user._addSuggestion(suggestion);
@@ -28,7 +28,7 @@ public class Association {
 		}
 	}
 	
-	public static class AsignarComentario {
+	public static class AsignComentario {
 		
 		public static void link(Comment comment, Suggestion suggestion, User user){
 			user._addComment(comment);

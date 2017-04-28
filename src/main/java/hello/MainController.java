@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.eclipse.persistence.mappings.Association;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +25,7 @@ import model.Suggestion;
 import model.User;
 import model.exception.BusinessException;
 import repository.CommentRepository;
+import model.Association;
 
 @Controller
 public class MainController {
@@ -33,11 +33,15 @@ public class MainController {
 	@Autowired
 	private KafkaProducer kafkaProducer;
 	private Suggestion nuevaSugerencia;
-	// private CommentRepository commentRepository;
-	private SuggestionService suggestionService;
 	private CommentService commentService;
 	private CitizenService citizenService;
 	private UserService UserService;
+	
+	@Autowired
+	private CommentRepository CommentRepository;
+
+	@Autowired
+	private SuggestionService suggestionService;
 
 
 	public void setSuggestionService(SuggestionService suggestionService) {
@@ -88,7 +92,7 @@ public class MainController {
 		Comment comentario = new Comment(contenido, nuevaSugerencia, (Citizen) session.getAttribute("user"));
 
 		// commentRepository.save(comentario);
-		commentService.createComentario(comentario);
+		commentService.createComment(comentario);
 		// commentService.createComentario(contenido, nuevaSugerencia, (Citizen)
 		// session.getAttribute("user"));
 		model.addAttribute("nuevaSugerencia", suggestionService.getSuggestion(nuevaSugerencia.getId()));
@@ -198,13 +202,14 @@ public class MainController {
 
 	@RequestMapping(value = "/eliminarSugerencia", method = RequestMethod.POST)
 	public String deleteSuggestion(Model model, @RequestParam("suggestion") Long id) {
-		    	Suggestion s = suggestionService.getSuggestion(id);
-		    	Association.AsignarSugerencia.unlink(s.getUsuario(), s);
-		    	for(Comment c: s.getComentarios()){
+		    	Suggestion sug = suggestionService.getSuggestion(id);
+		    	Association.AsignSuggestion.unlink(sug.getUser(), sug);
+		    	for(Comment c: sug.getComments()){
 		    		CommentRepository.delete(c);
 		    	}
 		    	suggestionService.deleteSuggestion(id);
-		    	cargarSugerencias(model);
+		    	List<Suggestion> suggestions = suggestionService.getSuggestions();
+				model.addAttribute("sugerencias", suggestions);
 		    	return "listaSugerenciasAdmin";
 		    }
 
