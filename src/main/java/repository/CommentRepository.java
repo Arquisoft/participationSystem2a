@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import model.Comment;
 import model.Suggestion;
 
-@Repository
+
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
 	List<Comment> findBySuggestionOrderByDescDate(Suggestion suggestion);
