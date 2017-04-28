@@ -20,6 +20,8 @@ public class UserServiceImpl implements UserService {
 		return UserRepository.findByUserAndPassword(user, password);
 
 	}
+	
+	
 
 
 

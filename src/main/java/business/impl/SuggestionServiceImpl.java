@@ -51,31 +51,14 @@ public class SuggestionServiceImpl implements SuggestionService {
     }
 
     @Override
-    public void votePositiveSugerencia(Suggestion sug, Citizen ciudadano) throws BusinessException {
+    public void votePositivesuggestion(Suggestion sug, Citizen ciudadano) throws BusinessException {
 	// TODO Auto-generated method stub
 
     }
 
     @Override
-    public void voteNegativeSugerencia(Suggestion sug, Citizen ciudadano) throws BusinessException {
+    public void voteNegativesuggestion(Suggestion sug, Citizen ciudadano) throws BusinessException {
 	// TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void createSugerencia(Citizen citizen, Category categoria, String titulo, String texto)
-	    throws BusinessException {
-	try {
-	    Suggestion sugerencia = new Suggestion(citizen, categoria, titulo, texto);
-	    suggestionRepository.save(sugerencia);
-	    /*
-	     * Tenemos que crear un log
-	     * LOG.send(Topics.CREATE_sugerenciaGESTION, sugerencia.getTitulo()
-	     * + sugerencia.getTexto() + separator + sugerencia.getCategoria());
-	     */
-	} catch (Exception e) {
-	    throw new BusinessException("No se ha podido crear la sugerencia.");
-	}
 
     }
 
@@ -83,5 +66,42 @@ public class SuggestionServiceImpl implements SuggestionService {
     public void deleteSuggestion(Long id) {
 	suggestionRepository.delete(id);
     }
+    
+    
+
+	@Override
+	public Suggestion addSuggestion(Suggestion suggestion) {
+		return suggestionRepository.save(suggestion);
+	}
+
+	@Override
+	public void updateSuggestion(Suggestion suggestion) {
+		suggestionRepository.save(suggestion);
+	}
+
+	@Override
+	public List<Suggestion> getSuggestions() {
+		return suggestionRepository.findAll();
+	}
+
+	@Override
+	public void votePositiveSugerencia(Suggestion sug, Citizen ciudadano) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void voteNegativeSugerencia(Suggestion sug, Citizen ciudadano) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void createSugerencia(Citizen citizen, Category categoria, String titulo, String contenido)
+			throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

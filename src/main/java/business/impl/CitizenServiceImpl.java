@@ -19,16 +19,6 @@ public class CitizenServiceImpl implements CitizenService {
 	private CitizenRepository citizenRepository;
 	private CategoryRepository categoryRepository;
 	
-	@Override
-	public void createSugerencia(Citizen citizen, Category categoria, String titulo, String texto) {
-
-		// Realizar comprobaciones previas
-
-		boolean ComprobacionesPrevias = true;
-		if (ComprobacionesPrevias) {
-			Suggestion sugerencia1 = new Suggestion(citizen, categoria, titulo, texto);
-		}
-	}
 
 	@Override
 	public void createComentario(Comment comentario) {
@@ -78,6 +68,12 @@ public class CitizenServiceImpl implements CitizenService {
 	public Citizen getCitizen(String dni) {
 		Citizen c = this.citizenRepository.findByDni(dni);
 		return c;
+	}
+
+	@Override
+	public void createSugerencia(Citizen citizen, Category categoria, String titulo, String texto) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

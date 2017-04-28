@@ -26,4 +26,14 @@ public interface SuggestionService {
 
     public void deleteSuggestion(Long id);
 
+	Suggestion addSuggestion(Suggestion suggestion);
+
+	void updateSuggestion(Suggestion suggestion);
+
+	List<Suggestion> getSuggestions();
+
+	void votePositivesuggestion(Suggestion sug, Citizen ciudadano) throws BusinessException;
+
+	void voteNegativesuggestion(Suggestion sug, Citizen ciudadano) throws BusinessException;
+
 }

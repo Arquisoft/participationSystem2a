@@ -13,6 +13,7 @@ import repository.CommentRepository;
 
 public class CommentServiceImpl implements CommentService {
 	
+	@Autowired
 	private CommentRepository commentRepository;
 
 	@Autowired
@@ -21,12 +22,12 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public void createComentario(Comment comment) throws BusinessException {
+	public void createComment(Comment comment) throws BusinessException {
 		try {
 			this.commentRepository.save(comment);
 		/* LOG
 			LOG.send(Topics.COMMENT_SUGGESTION,
-					comment.getSugerencia().getId() + comment.getTexto());
+					comment.getsuggestion().getId() + comment.getTexto());
 					*/
 		} catch (Exception e) {
 			throw new BusinessException("Error al crear un comentario.");
@@ -34,12 +35,17 @@ public class CommentServiceImpl implements CommentService {
 
 	}
 	
+
 	@Override
-	public void createComentario(String texto, Suggestion suggestion, Citizen citizen) {
-		
-		Comment c = new Comment(texto,suggestion,citizen);
-		suggestion.addComentario(c);
-		commentRepository.save(c);
+	public List<Comment> findBySuggestionOrderByDescDate(Suggestion suggestion) {
+		return commentRepository.findBySuggestionOrderByDescDate(suggestion);
 	}
+
+	@Override
+	public List<Comment> findBySuggestionOrderByAscDate(Suggestion suggestion) {
+		return commentRepository.findBySuggestionOrderByAscDate(suggestion);
+	}
+
+	
 
 }
