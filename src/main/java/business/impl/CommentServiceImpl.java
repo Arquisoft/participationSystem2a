@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import business.CommentService;
 import model.Citizen;
-import model.Comentario;
-import model.Sugerencia;
+import model.Comment;
+import model.Suggestion;
 import model.exception.BusinessException;
 import repository.CommentRepository;
 
@@ -21,7 +21,7 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public void createComentario(Comentario comment) throws BusinessException {
+	public void createComentario(Comment comment) throws BusinessException {
 		try {
 			this.commentRepository.save(comment);
 		/* LOG
@@ -35,9 +35,9 @@ public class CommentServiceImpl implements CommentService {
 	}
 	
 	@Override
-	public void createComentario(String texto, Sugerencia suggestion, Citizen citizen) {
+	public void createComentario(String texto, Suggestion suggestion, Citizen citizen) {
 		
-		Comentario c = new Comentario(texto,suggestion,citizen);
+		Comment c = new Comment(texto,suggestion,citizen);
 		suggestion.addComentario(c);
 		commentRepository.save(c);
 	}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.eclipse.persistence.mappings.Association;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,17 +21,18 @@ import business.UserService;
 import hello.producers.KafkaProducer;
 import model.Category;
 import model.Citizen;
-import model.Comentario;
-import model.Sugerencia;
+import model.Comment;
+import model.Suggestion;
 import model.User;
 import model.exception.BusinessException;
+import repository.CommentRepository;
 
 @Controller
 public class MainController {
 
 	@Autowired
 	private KafkaProducer kafkaProducer;
-	private Sugerencia nuevaSugerencia;
+	private Suggestion nuevaSugerencia;
 	// private CommentRepository commentRepository;
 	private SuggestionService suggestionService;
 	private CommentService commentService;
@@ -74,7 +76,7 @@ public class MainController {
 	}
 
 	@RequestMapping("/newComment")
-	public String newComment(@RequestParam("sugerencia") Sugerencia sugerencia) {
+	public String newComment(@RequestParam("sugerencia") Suggestion sugerencia) {
 		this.nuevaSugerencia = sugerencia;
 		return "/user/createComment";
 	}
@@ -83,7 +85,7 @@ public class MainController {
 	public String añadirComentario(HttpSession session, Model model, @RequestParam String contenido)
 			throws BusinessException {
 		// OJO CON ESTA LINEA (user?citizen?)
-		Comentario comentario = new Comentario(contenido, nuevaSugerencia, (Citizen) session.getAttribute("user"));
+		Comment comentario = new Comment(contenido, nuevaSugerencia, (Citizen) session.getAttribute("user"));
 
 		// commentRepository.save(comentario);
 		commentService.createComentario(comentario);
@@ -162,7 +164,7 @@ public class MainController {
 	@RequestMapping(value = "/mostrarSugerencia", method = RequestMethod.POST)
 	public String mostrarSugerencia(HttpSession session, Model model, @RequestParam("sugerencia") Long id) {
 
-		Sugerencia sugerencia = suggestionService.getSuggestion(id);
+		Suggestion sugerencia = suggestionService.getSuggestion(id);
 
 		this.nuevaSugerencia = sugerencia;
 
@@ -180,7 +182,7 @@ public class MainController {
 
 	@RequestMapping(value = "/listSuggestions", method = RequestMethod.POST)
 	public String irALista(Model model) {
-		List<Sugerencia> sugerencias = suggestionService.findAll();
+		List<Suggestion> sugerencias = suggestionService.findAll();
 		model.addAttribute("sugerencias", sugerencias);
 		return "listaSugerencias";
 	}
@@ -195,19 +197,15 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/eliminarSugerencia", method = RequestMethod.POST)
-	public String eliminarSugerencia(Model model, @RequestParam("sugerencia") Long id) {
-		Sugerencia sugerencia = suggestionService.getSuggestion(id);
-		
-		// Borra los comentarios escritos en ella
-		for (Comentario c : sugerencia.getComentarios()) {
-			// commentRepository.delete(c);
-			// commentService.delete(c);
-		}
-		suggestionService.deleteSuggestion(id);
-		// Las vuelve a cargar
-		List<Sugerencia> sugerencias = suggestionService.findAll();
-		model.addAttribute("sugerencias", sugerencias);
-		return "listaSugerenciasAdmin";
-	}
+	public String deleteSuggestion(Model model, @RequestParam("suggestion") Long id) {
+		    	Suggestion s = suggestionService.getSuggestion(id);
+		    	Association.AsignarSugerencia.unlink(s.getUsuario(), s);
+		    	for(Comment c: s.getComentarios()){
+		    		CommentRepository.delete(c);
+		    	}
+		    	suggestionService.deleteSuggestion(id);
+		    	cargarSugerencias(model);
+		    	return "listaSugerenciasAdmin";
+		    }
 
 }

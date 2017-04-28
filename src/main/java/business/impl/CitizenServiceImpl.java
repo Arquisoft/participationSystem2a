@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import business.CitizenService;
 import model.Category;
 import model.Citizen;
-import model.Comentario;
-import model.Sugerencia;
+import model.Comment;
+import model.Suggestion;
 import model.exception.BusinessException;
 import repository.CategoryRepository;
 import repository.CitizenRepository;
@@ -26,18 +26,18 @@ public class CitizenServiceImpl implements CitizenService {
 
 		boolean ComprobacionesPrevias = true;
 		if (ComprobacionesPrevias) {
-			Sugerencia sugerencia1 = new Sugerencia(citizen, categoria, titulo, texto);
+			Suggestion sugerencia1 = new Suggestion(citizen, categoria, titulo, texto);
 		}
 	}
 
 	@Override
-	public void createComentario(Comentario comentario) {
+	public void createComentario(Comment comentario) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void updateSugerencia(Sugerencia sugerencia) {
+	public void updateSugerencia(Suggestion sugerencia) {
 		// TODO Auto-generated method stub
 
 	}

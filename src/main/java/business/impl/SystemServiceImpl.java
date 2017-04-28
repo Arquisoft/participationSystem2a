@@ -4,7 +4,7 @@ import java.util.List;
 
 import business.SystemService;
 import model.Category;
-import model.Sugerencia;
+import model.Suggestion;
 import model.exception.BusinessException;
 import repository.CategoryRepository;
 import repository.SuggestionRepository;
@@ -25,13 +25,13 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public List<Sugerencia> findAllSugerencias() throws BusinessException {
-    	List<Sugerencia> suggestions= this.suggestionRepository.findAll();
+    public List<Suggestion> findAllSugerencias() throws BusinessException {
+    	List<Suggestion> suggestions= this.suggestionRepository.findAll();
 		return suggestions;
     }
 
     @Override
-    public List<Sugerencia> findSugerenciasByCategory(Long idCategory) throws BusinessException {
+    public List<Suggestion> findSugerenciasByCategory(Long idCategory) throws BusinessException {
 	// TODO Auto-generated method stub
 	return null;
     }

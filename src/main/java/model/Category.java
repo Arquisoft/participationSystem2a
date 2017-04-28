@@ -12,7 +12,7 @@ public class Category {
     String nombre;
 
     @OneToMany(mappedBy="TCATEGORIA", cascade = CascadeType.ALL)
-    private Set<Sugerencia> sugerencias;
+    private Set<Suggestion> sugerencias;
 
     public Category(String nombre) {
 	super();
@@ -27,11 +27,11 @@ public class Category {
 	return id;
     }
 
-    public Set<Sugerencia> getSugerencias() {
-	return new HashSet<Sugerencia>(sugerencias);
+    public Set<Suggestion> getSugerencias() {
+	return new HashSet<Suggestion>(sugerencias);
     }
 
-    public void addSugerencia(Sugerencia sugerencia) {
+    public void addSugerencia(Suggestion sugerencia) {
 	this.sugerencias.add(sugerencia);
     }
 

@@ -24,7 +24,7 @@ public class Citizen {
 	private String address;
 	private String nationality;
 	private String dni;
-	private String user;
+	private User user;
 	private String password;
 	private boolean isAdmin;
 
@@ -33,7 +33,7 @@ public class Citizen {
 	}
 
 	public Citizen(String name, String surname, String email, Date bornDate, String address,
-			String nationality, String dni, String user, String password) {
+			String nationality, String dni, String password) {
 		super();
 		this.name = name;
 		this.surname = surname;
@@ -42,7 +42,6 @@ public class Citizen {
 		this.address = address;
 		this.nationality = nationality;
 		this.dni = dni;
-		this.user = user;
 		this.password = password;
 	}
 
@@ -59,11 +58,11 @@ public class Citizen {
 		this.isAdmin = isAdmin;
 	}
 
-	public String getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(String user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 
@@ -169,6 +168,12 @@ public class Citizen {
 		return "Citizen [name=" + name + ", surname=" + surname + ", email=" + email + ", bornDate="
 				+ bornDate + ", address=" + address + ", nationality=" + nationality + ", dni="
 				+ dni + "]";
+	}
+	
+
+
+	protected void _setUser(User user) {
+		this.user = user;
 	}
 
 }

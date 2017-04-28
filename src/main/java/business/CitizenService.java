@@ -4,17 +4,17 @@ import java.util.List;
 
 import model.Category;
 import model.Citizen;
-import model.Comentario;
-import model.Sugerencia;
+import model.Comment;
+import model.Suggestion;
 import model.exception.BusinessException;
 
 public interface CitizenService {
 
     public void createSugerencia(Citizen citizen, Category categoria, String titulo, String texto);
 
-    public void createComentario(Comentario comentario);
+    public void createComentario(Comment comentario);
 
-    public void updateSugerencia(Sugerencia sugerencia);
+    public void updateSugerencia(Suggestion sugerencia);
 
     public void deleteSugerencia(Long id);
 

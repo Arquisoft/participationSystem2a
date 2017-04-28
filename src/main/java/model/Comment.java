@@ -3,8 +3,9 @@ package model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-public class Comentario {
+public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,14 +13,16 @@ public class Comentario {
     String comentario;
     String texto;
     Citizen citizen;
-    Sugerencia suggestion;
+    Suggestion suggestion;
+	@ManyToOne
+	private User user;
 
-    public Comentario(String comentario) {
+    public Comment(String comentario) {
 	super();
 	this.comentario = comentario;
     }
 
-    public Comentario(String texto, Sugerencia suggestion, Citizen citizen) {
+    public Comment(String texto, Suggestion suggestion, Citizen citizen) {
 	this.texto = texto;
 	this.suggestion = suggestion;
 	this.citizen = citizen;
@@ -49,7 +52,7 @@ public class Comentario {
 	return texto;
     }
 
-    public Sugerencia getSuggestion() {
+    public Suggestion getSuggestion() {
 	return suggestion;
     }
 
@@ -69,7 +72,7 @@ public class Comentario {
 	    return false;
 	if (getClass() != obj.getClass())
 	    return false;
-	Comentario other = (Comentario) obj;
+	Comment other = (Comment) obj;
 	if (id == null) {
 	    if (other.id != null)
 		return false;
@@ -82,5 +85,19 @@ public class Comentario {
     public String toString() {
 	return "Comentario [texto=" + texto + ", citizen=" + citizen + ", suggestion=" + suggestion + "]";
     }
+    
+   
+	
+	protected void _setSuggestion(Suggestion suggestion){
+		this.suggestion = suggestion;
+	}
+	
+	public User getUsuario() {
+		return user;
+	}
+	
+	protected void _setUser(User user){
+		this.user = user;
+	}
 
 }

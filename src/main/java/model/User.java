@@ -1,27 +1,36 @@
 package model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-    String user;
-    String password;
+	String user;
+	String password;
 	private boolean isAdmin;
 	private Citizen citizen;
 
+	@OneToMany(mappedBy="usuario")
+	private Set<Suggestion> suggestions = new HashSet<>();
+	@OneToMany(mappedBy="usuario")
+	private Set<Comment> comments = new HashSet<>();
 
 
-    public User(String user, String password) {
-	this.user = user;
-	this.password = password;
-    }
-    
-    public User(String user) {
+
+	public User(String user, String password) {
+		this.user = user;
+		this.password = password;
+	}
+
+	public User(String user) {
 		this.user = user;
 	}
 
@@ -76,7 +85,7 @@ public class User {
 			return false;
 		return true;
 	}
-	
+
 	public boolean isAdmin() {
 		return isAdmin;
 	}
@@ -84,4 +93,55 @@ public class User {
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+
+
+
+
+
+	protected void _setCitizen(Citizen citizen) {
+		this.citizen = citizen;
+	}
+
+	public Set<Suggestion> getSuggestions() {
+		return new HashSet<>(suggestions);
+	}
+
+	protected Set<Suggestion> _getSuggestions() {
+		return suggestions;
+	}
+
+	public void setSuggestions(Set<Suggestion> suggestions) {
+		this.suggestions = suggestions;
+	}
+
+	public Set<Comment> getcomments() {
+		return new HashSet<>(comments);
+	}
+
+	protected Set<Comment> _getcomments(){
+		return comments;
+	}
+
+	public void setComments(Set<Comment> comments) {
+		this.comments = comments;
+	}
+
+	protected void _addSuggestion(Suggestion suggestion){
+		suggestions.add(suggestion);
+	}
+
+	protected void _deleteSuggestion(Suggestion suggestion){
+		suggestions.remove(suggestion);
+	}
+
+	protected void _addComment(Comment comment) {
+		comments.add(comment);
+	}
+
+	protected void _deleteComment(Comment comment) {
+		comments.remove(comment);
+	}
+
+
+
 }

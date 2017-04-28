@@ -6,13 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import model.Category;
-import model.Sugerencia;
+import model.Suggestion;
 
 
 @Repository
-public interface SuggestionRepository extends JpaRepository<Sugerencia, Long>{
+public interface SuggestionRepository extends JpaRepository<Suggestion, Long>{
 
-	    List<Sugerencia> findByCategoria(Category categoria);
+	    List<Suggestion> findByCategoria(Category categoria);
 
 
 	}
