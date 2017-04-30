@@ -6,11 +6,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import model.User;
 
-
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	@Query("SELECT p FROM Participant p WHERE p.user = :user and p.password = :password")
-	User findByUserAndPassword(@Param("user") String user, @Param("password") String password);
+	@Query("SELECT u FROM User u WHERE u.usuario = :usuario and u.contraseña = :contraseña")
+	User findByUserAndPassword(@Param("usuario") String usuario, @Param("contraseña") String contraseña);
 
 }

@@ -44,11 +44,11 @@ public class VoteComment implements Serializable {
 		this.user = user;
 	}
 
-	public boolean isvotePlus() {
+	public boolean isVotePlus() {
 		return votePlus;
 	}
 
-	public void setvotePlus(boolean voto) {
+	public void setVotePlus(boolean voto) {
 		this.votePlus = voto;
 	}
 

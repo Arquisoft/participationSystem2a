@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Lista de sugerencias</title>
+</head>
+<body>
+	<div>
+		<form th:action="@{/logOut}" method="POST"> 
+					<button id="logOut" type="submit" name="logOut">Cerrar sesion</button>
+		</form>
+	</div>
+	
+	<div th:id="All">
+			<table border="1">
+				<tr>
+					<th>Texto</th>
+					<th></th>
+					<th>Usuario</th>
+					<th></th>
+				</tr>
+				<tr th:each="sug : ${suggestions}">	
+			                  <td th:text="${sug.texto}"></td>
+			                  <td></td>
+			                  <td th:text="${sug.user.user}"/> 
+		       				  <td></td>
+		       				  <td>
+		       				  <form th:action="@{/show(suggestion=${sug.id})}" method="POST"> <!--admin-->
+		       				  	<button id="show" type="submit" name="show" th:value="${sug.texto}">
+		       				  	Mostrar
+		       				  	</button>
+		       				 
+		       				  </form>
+		       				  </td> 
+		       				  <td>
+		       				  <form th:action="@{/deleteSuggestion(suggestion=${sug.id})}" method="POST">
+		       				  	<button id="delete" type="submit" name="delete" th:value="${sug.texto}">
+		       				  	Eliminar
+		       				  	</button>
+		       				 
+		       				  </form>
+		       				  </td> 
+				</tr>
+			</table>
+</div>
+</body>
+</html>

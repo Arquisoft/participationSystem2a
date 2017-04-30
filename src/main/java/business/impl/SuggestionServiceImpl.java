@@ -43,13 +43,13 @@ public class SuggestionServiceImpl implements SuggestionService {
     public Suggestion getSuggestion(Long id) {
 	return suggestionRepository.findOne(id);
     }
-
+/*
     @Override
     public List<Suggestion> findByCat(Category cat) {
 	return this.suggestionRepository.findByCategoria(cat);
 
     }
-
+*/
     @Override
     public void votePositivesuggestion(Suggestion sug, Citizen ciudadano) throws BusinessException {
 	// TODO Auto-generated method stub
@@ -101,6 +101,12 @@ public class SuggestionServiceImpl implements SuggestionService {
 			throws BusinessException {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Suggestion> findByCat(Category cat) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

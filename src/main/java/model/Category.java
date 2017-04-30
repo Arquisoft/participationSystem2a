@@ -4,40 +4,47 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 
+
 @Entity
-@Table(name = "TCATEGORIA")
+@Table(name = "TCATEGORY")
 public class Category {
 
     Long id;
-    String nombre;
+    String name;
 
-    @OneToMany(mappedBy="TCATEGORIA", cascade = CascadeType.ALL)
-    private Set<Suggestion> sugerencias;
+    @OneToMany(mappedBy="TCATEGORY", cascade = CascadeType.ALL)
+    private Set<Suggestion> suggestions;
+    
+    Category(){}
 
-    public Category(String nombre) {
+    public Category(String name) {
 	super();
-	this.nombre = nombre;
+	this.name = name;
     }
 
-    public String getNombre() {
-	return nombre;
+    public String getName() {
+	return name;
     }
 
     public Long getId() {
 	return id;
     }
 
-    public Set<Suggestion> getSugerencias() {
-	return new HashSet<Suggestion>(sugerencias);
+    public Set<Suggestion> getSuggestions() {
+	return new HashSet<Suggestion>(suggestions);
     }
+    
+    protected Set<Suggestion> _getSuggestions() {
+		return suggestions;
+	}
 
-    public void addSugerencia(Suggestion sugerencia) {
-	this.sugerencias.add(sugerencia);
+    public void addsuggestion(Suggestion suggestion) {
+	this.suggestions.add(suggestion);
     }
 
     @Override
     public int hashCode() {
-	return nombre.hashCode();
+	return name.hashCode();
     }
 
     @Override
@@ -54,17 +61,17 @@ public class Category {
 		return false;
 	} else if (!id.equals(other.id))
 	    return false;
-	if (nombre == null) {
-	    if (other.nombre != null)
+	if (name == null) {
+	    if (other.name != null)
 		return false;
-	} else if (!nombre.equals(other.nombre))
+	} else if (!name.equals(other.name))
 	    return false;
 	return true;
     }
 
     @Override
     public String toString() {
-	return "Categoria [id=" + id + ", nombre=" + nombre + ", sugerencias=" + sugerencias + "]";
+	return "Categoria [id=" + id + ", name=" + name + ", Suggestions=" + suggestions + "]";
     }
 
 }

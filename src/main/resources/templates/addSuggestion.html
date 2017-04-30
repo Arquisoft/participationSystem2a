@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Añadir sugerencia</title>
+</head>
+<body>
+<h1>Nueva sugerencia</h1>
+<form th:action="@{/addSuggestion}" method="POST">
+	<div>
+	    <label for="texto">Texto: </label>
+	    <input type="text" id="texto" name="texto"/>
+    </div>
+    <button id="newSuggestion" type="submit">Nueva sugerencia</button>
+</form>
+</body>
+</html>

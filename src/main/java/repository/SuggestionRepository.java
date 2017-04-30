@@ -12,7 +12,7 @@ import model.Suggestion;
 @Repository
 public interface SuggestionRepository extends JpaRepository<Suggestion, Long>{
 
-	    List<Suggestion> findByCategoria(Category categoria);
+//	    List<Suggestion> findByCategoria(Category categoria);
 
 
 	}

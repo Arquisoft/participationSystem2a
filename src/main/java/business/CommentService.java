@@ -14,4 +14,10 @@ public interface CommentService {
 	List<Comment> findBySuggestionOrderByDescDate(Suggestion suggestion);
 
 	List<Comment> findBySuggestionOrderByAscDate(Suggestion suggestion);
+
+	Comment addComment(Comment comment);
+	
+	List<Comment> getCommentsByDate(Long id);
+	
+	List<Comment> getCommentsByPopularity(Long id); 
 }

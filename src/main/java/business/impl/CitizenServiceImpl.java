@@ -50,11 +50,13 @@ public class CitizenServiceImpl implements CitizenService {
 
 	}
 
+	/*
 	@Override
 	public List<Category> getAllCategories() throws BusinessException {
 		return categoryRepository.findAll();
 
 	}
+	*/
 
 
 
@@ -64,16 +66,30 @@ public class CitizenServiceImpl implements CitizenService {
 
 	}
 	
+	/*
 	@Override
 	public Citizen getCitizen(String dni) {
 		Citizen c = this.citizenRepository.findByDni(dni);
 		return c;
 	}
+	*/
 
 	@Override
 	public void createSugerencia(Citizen citizen, Category categoria, String titulo, String texto) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Category> getAllCategories() throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Citizen getCitizen(String dni) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

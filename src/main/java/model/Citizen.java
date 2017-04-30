@@ -28,7 +28,6 @@ public class Citizen {
 	private String password;
 	private boolean isAdmin;
 
-	// Constructor vacio para JPA
 	public Citizen() {
 	}
 
@@ -135,7 +134,7 @@ public class Citizen {
 	}
 
 	public void setAdmin(boolean isAdmin) {
-		isAdmin = isAdmin;
+		this.isAdmin = isAdmin;
 	}
 
 	@Override

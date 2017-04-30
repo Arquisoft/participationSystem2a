@@ -45,6 +45,23 @@ public class CommentServiceImpl implements CommentService {
 	public List<Comment> findBySuggestionOrderByAscDate(Suggestion suggestion) {
 		return commentRepository.findBySuggestionOrderByAscDate(suggestion);
 	}
+	
+	@Override
+	public Comment addComment(Comment comment) {
+		return commentRepository.save(comment);
+	}
+	
+	@Override
+	public List<Comment> getCommentsByDate(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public List<Comment> getCommentsByPopularity(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 

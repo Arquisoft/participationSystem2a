@@ -18,9 +18,9 @@ public class User {
 	private boolean isAdmin;
 	private Citizen citizen;
 
-	@OneToMany(mappedBy="usuario")
+	@OneToMany(mappedBy="user")
 	private Set<Suggestion> suggestions = new HashSet<>();
-	@OneToMany(mappedBy="usuario")
+	@OneToMany(mappedBy="user")
 	private Set<Comment> comments = new HashSet<>();
 
 

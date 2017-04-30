@@ -6,4 +6,6 @@ public interface UserService {
 
 	public User findByUserAndPassword(String user, String password);
 
+	public User addUser(User user);
+
 }

@@ -14,7 +14,7 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String comentario;
+    String comment;
     String texto;
     Citizen citizen;
     Suggestion suggestion;
@@ -23,9 +23,9 @@ public class Comment {
 	@Temporal(TemporalType.DATE)
 	private Date date;
 
-    public Comment(String comentario) {
+    public Comment(String comment) {
 	super();
-	this.comentario = comentario;
+	this.comment = comment;
     }
 
     public Comment(String texto, Suggestion suggestion, Citizen citizen) {
@@ -43,11 +43,11 @@ public class Comment {
 	}
 
     public String getComentario() {
-	return comentario;
+	return comment;
     }
 
-    void setComentario(String comentario) {
-	this.comentario = comentario;
+    void setComentario(String comment) {
+	this.comment = comment;
     }
 
     public Citizen getCitizen() {

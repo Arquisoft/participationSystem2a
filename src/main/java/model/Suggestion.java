@@ -39,7 +39,7 @@ public class Suggestion {
 	private int votesPlus;
 	private int votesMinus;
 
-	@OneToMany(mappedBy="sugerencia")
+	@OneToMany(mappedBy="suggestion")
 	private Set<Comment> comments = new HashSet<>();
 
 	Suggestion(){}
