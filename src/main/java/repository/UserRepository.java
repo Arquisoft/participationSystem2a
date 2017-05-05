@@ -9,7 +9,7 @@ import model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	@Query("SELECT u FROM User u WHERE u.usuario = :usuario and u.contraseña = :contraseña")
-	User findByUserAndPassword(@Param("usuario") String usuario, @Param("contraseña") String contraseña);
+	@Query("SELECT u FROM User u WHERE u.user = :user and u.password = :password")
+	User findByUserAndPassword(@Param("user") String user, @Param("password") String password);
 
 }

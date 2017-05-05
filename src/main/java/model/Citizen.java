@@ -24,15 +24,17 @@ public class Citizen {
 	private String address;
 	private String nationality;
 	private String dni;
-	private User user;
+	private String user;
 	private String password;
 	private boolean isAdmin;
+	
+	Citizen[] Pepe = new Citizen["Joni","Joni","joni@gmail.com","19/02/1994","Calletaltal","España","123456M","Joni","Joni"];
 
 	public Citizen() {
 	}
 
 	public Citizen(String name, String surname, String email, Date bornDate, String address,
-			String nationality, String dni, String password) {
+			String nationality, String dni, String user, String password) {
 		super();
 		this.name = name;
 		this.surname = surname;
@@ -41,6 +43,7 @@ public class Citizen {
 		this.address = address;
 		this.nationality = nationality;
 		this.dni = dni;
+		this.user = user;
 		this.password = password;
 	}
 

@@ -112,41 +112,43 @@ public class MainController {
 	 */
 
 	
-	/*
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(HttpSession session, Model model, @RequestParam String username,
 			@RequestParam String password) {
 		Citizen citizen = citizenService.getCitizen(username);
 		if (citizen != null && password.equals(citizen.getPassword())) {
 			session.setAttribute("user", new User(username, password));
-			return "indexUsuario";
+			return "listSuggestions";
 		}
 		else if (citizen.isAdmin()) {
 			session.setAttribute("user", new User(username, password));
-			return "indexAdmin";
+			return "listSuggestionsAdmin";
 		}
 		return "login";
 	}
-	*/
 	
 	
 	
+	/*
 	 @RequestMapping(value="/login", method = RequestMethod.POST)
 	    public String login(HttpSession session, Model model, @RequestParam String user, @RequestParam String password){
+		 //Crear array de usuarios 
 			User userLogin = UserService.findByUserAndPassword(user, password);
 			if (userLogin != null) {
 				session.setAttribute("user", userLogin);
 				List<Suggestion> sugerencias = suggestionService.getSuggestions();
 				model.addAttribute("sugerencias", sugerencias);
 				if (userLogin.isAdmin()) {
-					return "indexAdmin";
+					return "listSuggestionsAdmin";
 				} else {
-					return "login";
+					return "listSuggestions";
 				}
 			} else {
 				return "login";
 			}
 	    }
+	    */
 
 	@RequestMapping(value = "/logOut")
 	public String logOut(HttpSession session) {
