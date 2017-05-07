@@ -112,7 +112,7 @@ public class MainController {
 	 */
 
 	
-	
+	/*
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(HttpSession session, Model model, @RequestParam String username,
 			@RequestParam String password) {
@@ -127,10 +127,10 @@ public class MainController {
 		}
 		return "login";
 	}
+	*/
 	
 	
 	
-	/*
 	 @RequestMapping(value="/login", method = RequestMethod.POST)
 	    public String login(HttpSession session, Model model, @RequestParam String user, @RequestParam String password){
 		 //Crear array de usuarios 
@@ -148,7 +148,7 @@ public class MainController {
 				return "login";
 			}
 	    }
-	    */
+	    
 
 	@RequestMapping(value = "/logOut")
 	public String logOut(HttpSession session) {
