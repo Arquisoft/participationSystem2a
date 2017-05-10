@@ -3,67 +3,47 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Mostrar Sugerencia</title>
 </head>
-
 <body>
-	<div>
-		<form th:action="@{/listSuggestion}" method="POST"> 
-					<button id="list" type="submit" name="list">Lista de sugerencias</button>
+	<div style="width:200px;background:#F9EECF;border:1px dotted black;text-align:center" align="center">
+		<form th:action="@{/listSuggestions}" method="POST"> 
+					<button id="listar" type="submit" name="listar">Lista de sugerencias</button>
 		</form>
 	</div>
-	<h1>Sugerencia seleccionada</h1>
-	<div>
-		<table border="1">
+	<h1>Sugerencia: </h1>
+	<div style="width:200px;background:#F9EECF;border:1px dotted black;text-align:center" align="center">
+		<table>
 			<tr>
-				<th>Texto</th>
+				<th>Sugerencia</th>
 				<th></th>
 				<th>Usuario</th>
-				<th>Apoyar</th>
-				<th>Rechazar</th>
 			</tr>
 			<tr>	
-		        <td th:text="${selected.texto}"/>
+		        <td th:text="${seleccionada.contenido}"/>
 		        <td/>
-		        <td th:text="${selected.user.user}"/>
-		        <td>PRUEBA PRUEBA</td>
-		        <td>123456789</td>      				 
+		        <td th:text="${seleccionada.usuario.usuario}"/>
 			</tr>
-			<tr>
-				<td/><td/><td/>
-				<td align="center">
-    				<form th:action="@{/show(suggestion=${selected.id})}" method="POST">
-    					<button id="more" type="submit" name="more" th:value="${selected.texto}">+</button>
-    				</form>
-    		    </td> 
-      			<td align="center">
-      				<form th:action="@{/show(suggestion=${selected.id})}" method="POST">
-      					<button id="less" type="submit" name="less" th:value="${selected.texto}">-</button>
-      				</form>
-      			</td> 
-			</tr> 
 		</table>
-	</div>
-	<div>
-		<form th:action="@{/newComment(suggestion=${selected.id})}" method="POST"> 
-					<button id="newComment" type="submit" name="newComment">Nuevo comentario</button>
+		
+		<form th:action="@{/nuevoComentario(sugerencia=${seleccionada.id})}" method="POST"> 
+					<button id="nuevoComentario" type="submit" name="nuevoComentario">Nuevo comentario</button>
 		</form>
 	</div>
 	
-	<div th:id="comments">
+	<div th:id="comentarios" style="width:200px;background:#F9EECF;border:1px dotted black;text-align:center" align="center">
 		<h2>Comentarios</h2>
-			<table border="1">
+			<table>
 				<tr>
-					<th>Texto</th>
+					<th>Contenido</th>
 					<th></th>
 					<th>Usuario</th>
 				</tr>
-				<tr th:each="c : ${selected.comments}">	
-			        <td th:text="${c.texto}"></td>
-			        <td></td>
-		       		<td th:text="${c.user.user}"></td>
-		       		<td></td>
+				<tr th:each="c : ${seleccionada.comentarios}">	
+			                  <td th:text="${c.contenido}"></td>
+			                  <td></td>
+		       				  <td th:text="${c.usuario.usuario}"></td>
+		       				  <td></td>
 				</tr>
 			</table>
-	</div>
+</div>
 </body>
-
 </html>

@@ -1,39 +1,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Lista de sugerencias</title>
+<title align="center">Lista de sugerencias</title>
 </head>
-
 <body>
-	<div>
-		<form th:action="@{/logOut}" method="POST"> 
-					<button id="logOut" type="submit" name="logOut">Cerrar sesion</button>
-		</form>
-	</div>
 	
-	<div>
-		<form th:action="@{/newSuggestion}" method="POST"> 
-					<button id="newSuggestion" type="submit" name="newSuggestion">Nueva sugerencia</button>
-		</form>	
-	</div>
 	
-	<div th:id="All">
-			<table border="1">
+	
+	<div th:id="todas" align="center">
+			<table>
 				<tr>
-					<th>Texto</th>
+					<th cellspacing="0" cellpadding="3">Sugerencia</th>
 					<th></th>
 					<th>Usuario</th>
 					<th></th>
 				</tr>
-				<tr th:each="sug : ${suggestions}">	
-			                  <td th:text="${sug.contenido}"></td>
+				<tr th:each="s : ${sugerencias}">	
+			                  <td th:text="${s.contenido}"></td>
 			                  <td></td>
-			                  <td th:text="${sug.usuario.usuario}"/> 
+			                  <td th:text="${s.usuario.usuario}"/> 
 		       				  <td></td>
 		       				  <td>
-		       				  <form th:action="@{/show(suggestion=${sug.id})}" method="POST">
-		       				  	<button id="show" type="submit" name="show" th:value="${sug.texto}">
+		       				  <form th:action="@{/mostrar(sugerencia=${s.id})}" method="POST">
+		       				  	<button id="ver" type="submit" name="ver" th:value="${s.contenido}">
 		       				  	Mostrar
 		       				  	</button>
 		       				 
@@ -41,6 +30,18 @@
 		       				  </td> 
 				</tr>
 			</table>
+			
+			<div>
+		<form th:action="@{/newSuggestion}" method="POST"> 
+					<button id="nueva" type="submit" name="nueva">Nueva sugerencia</button>
+		</form>	
+	</div>
 </div>
+
+<div align="right">
+		<form th:action="@{/logout}" method="POST"> 
+					<button id="logout" type="submit" name="logout">Cerrar sesion</button>
+		</form>
+	</div>
 </body>
 </html>

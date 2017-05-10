@@ -4,44 +4,44 @@
 <title>Mostrar Sugerencia</title>
 </head>
 <body>
-	<div>
-		<form th:action="@{/listSuggestionAdmin}" method="POST"> 
-					<button id="list" type="submit" name="list">Lista de sugerencias</button>
+	<div align="center">
+		<form th:action="@{/listSuggestionsAdmin}" method="POST"> 
+					<button id="listar" type="submit" name="listar">Lista de sugerencias</button>
 		</form>
 	</div>
 
 	<h1>Sugerencia seleccionada</h1>
-	<div>
-		<table border="1">
+	<div align="center">
+		<table>
 			<tr>
-				<th>Texto</th>
+				<th>Contenido</th>
 				<th></th>
 				<th>Usuario</th>
 			</tr>
 			<tr>	
-		        <td th:text="${selected.texto}"/>
+		        <td th:text="${seleccionada.contenido}"/>
 		        <td/>
-		        <td th:text="${selected.user.user}"/>
+		        <td th:text="${seleccionada.usuario.usuario}"/>
 			</tr>
 		</table>
 	</div>
 	
-	<div th:id="comments">
+	<div th:id="comentarios" align="center">
 		<h2>Comentarios</h2>
-			<table border="1">
+			<table>
 				<tr>
-					<th>Texto</th>
+					<th>Contenido</th>
 					<th></th>
 					<th>Usuario</th>
 				</tr>
-				<tr th:each="c : ${selected.comments}">	
-			                  <td th:text="${c.texto}"></td>
+				<tr th:each="c : ${seleccionada.comentarios}">	
+			                  <td th:text="${c.contenido}"></td>
 			                  <td></td>
-		       				  <td th:text="${c.user.user}"></td>
+		       				  <td th:text="${c.usuario.usuario}"></td>
 		       				  <td></td>
 		       				  <td>
-		       				  <form th:action="@{/deleteComment(comment=${c.id})}" method="POST">
-		       				  	<button id="show" type="submit" name="show" th:value="${c.texto}">
+		       				  <form th:action="@{/deleteComment(comentario=${c.id})}" method="POST">
+		       				  	<button id="ver" type="submit" name="ver" th:value="${c.contenido}">
 		       				  	Eliminar
 		       				  	</button>
 		       				 

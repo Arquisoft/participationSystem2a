@@ -4,13 +4,14 @@
 <title>Añadir sugerencia</title>
 </head>
 <body>
-<h1>Nueva sugerencia</h1>
+<h1 align="center">Nueva sugerencia</h1>
 <form th:action="@{/addSuggestion}" method="POST">
-	<div>
-	    <label for="texto">Texto: </label>
-	    <input type="text" id="texto" name="texto"/>
+	<div align="center">
+	    <label for="contenido">Sugerencia: </label>
+	    <input type="text" id="contenido" name="contenido"/>
+	    <button id="nuevaSugerencia" type="submit">Nueva sugerencia</button>
     </div>
-    <button id="newSuggestion" type="submit">Nueva sugerencia</button>
+    
 </form>
 </body>
 </html>

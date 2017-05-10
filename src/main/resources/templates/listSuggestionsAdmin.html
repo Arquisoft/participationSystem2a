@@ -4,36 +4,32 @@
 <title>Lista de sugerencias</title>
 </head>
 <body>
-	<div>
-		<form th:action="@{/logOut}" method="POST"> 
-					<button id="logOut" type="submit" name="logOut">Cerrar sesion</button>
-		</form>
-	</div>
 	
-	<div th:id="All">
-			<table border="1">
+	
+	<div th:id="todas" align="center">
+			<table>
 				<tr>
-					<th>Texto</th>
+					<th>Contenido</th>
 					<th></th>
 					<th>Usuario</th>
 					<th></th>
 				</tr>
-				<tr th:each="sug : ${suggestions}">	
-			                  <td th:text="${sug.texto}"></td>
+				<tr th:each="sug : ${sugerencias}">	
+			                  <td th:text="${sug.contenido}"></td>
 			                  <td></td>
-			                  <td th:text="${sug.user.user}"/> 
+			                  <td th:text="${sug.usuario.usuario}"/> 
 		       				  <td></td>
 		       				  <td>
-		       				  <form th:action="@{/show(suggestion=${sug.id})}" method="POST"> <!--admin-->
-		       				  	<button id="show" type="submit" name="show" th:value="${sug.texto}">
+		       				  <form th:action="@{/mostrar(sugerencia=${sug.id})}" method="POST">
+		       				  	<button id="ver" type="submit" name="ver" th:value="${sug.contenido}">
 		       				  	Mostrar
 		       				  	</button>
 		       				 
 		       				  </form>
 		       				  </td> 
 		       				  <td>
-		       				  <form th:action="@{/deleteSuggestion(suggestion=${sug.id})}" method="POST">
-		       				  	<button id="delete" type="submit" name="delete" th:value="${sug.texto}">
+		       				  <form th:action="@{/deleteSuggestion(sugerencia=${sug.id})}" method="POST">
+		       				  	<button id="eliminar" type="submit" name="eliminar" th:value="${sug.contenido}">
 		       				  	Eliminar
 		       				  	</button>
 		       				 
@@ -42,5 +38,11 @@
 				</tr>
 			</table>
 </div>
+
+<div>
+		<form th:action="@{/logout}" method="POST" align="right"> 
+					<button id="logout" type="submit" name="logout">Cerrar sesion</button>
+		</form>
+	</div>
 </body>
 </html>
